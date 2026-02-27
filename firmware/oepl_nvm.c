@@ -866,7 +866,7 @@ oepl_nvm_status_t oepl_nvm_get_image_by_type(uint8_t image_type, size_t* img_idx
         }
       }
       found = true;
-      DPRINTF("Found at idx 0x%x", *img_idx);
+      DPRINTF("Found at idx 0x%x\n", *img_idx);
     }
   }
 

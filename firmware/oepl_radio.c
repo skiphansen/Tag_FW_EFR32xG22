@@ -24,7 +24,10 @@
 // -----------------------------------------------------------------------------
 #ifndef RADIO_DEBUG_PRINT
 #define RADIO_DEBUG_PRINT 1
+#define DEBUG_LOG 1     // 0 = disable, 1 = enable, 2 = verbose
 #endif
+
+#include "logging.h"
 
 #ifndef RADIO_DEBUG_PRINT_IN_IRQ
 #define RADIO_DEBUG_PRINT_IN_IRQ 0
@@ -617,9 +620,12 @@ void oepl_radio_process(void)
             // Todo: error handling
           } else if (bp->blockPart < 8 * sizeof(current_state_data.blockreq.remaining_parts_mask)) {
             if((current_state_data.blockreq.remaining_parts_mask[bp->blockPart/8] & (1 << (bp->blockPart % 8))) != 0) {
-              DPRINTF("unseen part %d\n", bp->blockPart);
-              size_t size_to_copy = bp->blockPart == 41 ? 41 : 99;
+               size_t size_to_copy = bp->blockPart == 41 ? 41 : 99;
+              DPRINTF("unseen part %d/%d %d bytes checksum 0x%02x\n",
+                      bp->blockId,bp->blockPart,size_to_copy,bp->checksum);
+
               memcpy(&datablock_buffer[bp->blockPart * 99], &payload[sizeof(struct blockPart)], size_to_copy);
+
               current_state_data.blockreq.remaining_parts_mask[bp->blockPart/8] &= ~(1 << (bp->blockPart % 8));
               for(size_t i = 0; i < sizeof(current_state_data.blockreq.remaining_parts_mask); i++) {
                 if(current_state_data.blockreq.remaining_parts_mask[i] != 0) {
@@ -661,12 +667,16 @@ void oepl_radio_process(void)
                   } else {
                     DPRINTF("Header bytes 0x%02x 0x%02x 0x%02x 0x%02x\n", datablock_buffer[0], datablock_buffer[1], datablock_buffer[2], datablock_buffer[3]);
                     DPRINTF("Checksummed bytes:");
+#if 0
                     for(size_t i = 0; i < bd->size; i++) {
                       if((i & 0x7) == 0) {
                         DPRINTF("\n");
                       }
                       DPRINTF("%02x ", bd->data[i]);
                     }
+#else
+                    DUMP_HEX(bd->data,bd->size);
+#endif
                     cb_result = cb_fptr(BLOCK_CANCELED, NULL);
                     if(rx_state != AWAIT_BLOCK && rx_state != AWAIT_BLOCKREQ_ACK) {
                       if(datablock_buffer) {
@@ -681,7 +691,7 @@ void oepl_radio_process(void)
                 }
               }
             } else {
-              DPRINTF("Dup\n");
+              DPRINTF("Dup %d checksum 0x%02x\n",bp->blockPart,bp->checksum);
             }
           } else {
             DPRINTF("part outside of mask range\n");
@@ -1673,10 +1683,15 @@ static void state_timer_cb(sl_sleeptimer_timer_handle_t *handle, void *data)
 
 static bool checksum_check(const void *p, const uint8_t len) {
   uint8_t total = 0;
+  bool Ret;
   for (uint8_t c = 1; c < len; c++) {
     total += ((uint8_t *)p)[c];
   }
-  return ((uint8_t *)p)[0] == total;
+  Ret = ((uint8_t *)p)[0] == total;
+  LOG("Checksum of %d 0x%02x, expected 0x%02x:\n",len,total,((uint8_t *)p)[0]);
+  DUMP_HEX(p,len);
+
+  return Ret;
 }
 
 static void checksum_add(void *p, const uint8_t len) {

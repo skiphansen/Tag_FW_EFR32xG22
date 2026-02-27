@@ -46,6 +46,8 @@ source:
 - {path: 'fonts/FreeSans9pt7b.c'}
 - {path: 'fonts/FreeSansBold18pt7b.c'}
 - {path: 'fonts/FreeSansBold24pt7b.c'}
+- {path: logging.c}
+- {path: logging.h}
 include:
 - path: 'boilerplate'
   file_list:
