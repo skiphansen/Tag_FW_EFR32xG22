@@ -807,7 +807,7 @@ void oepl_radio_process(void)
                         } else {
                           DPRINTF("Checksum on block invalid after skipping blockreq ack\n");
                           DPRINTF("Header bytes 0x%02x 0x%02x 0x%02x 0x%02x\n", datablock_buffer[0], datablock_buffer[1], datablock_buffer[2], datablock_buffer[3]);
-                          DPRINTF("Checksummed bytes:");
+                          DPRINTF("Checksummed bytes:\n");
                           for(size_t i = 0; i < bd->size; i++) {
                             if((i & 0x7) == 0) {
                               DPRINTF("\n");
@@ -1661,6 +1661,12 @@ static void schedule_next_poll(size_t timeout_s)
   }
 
   DPRINTF("Next poll in %ds\n", timeout_s);
+#ifdef DEBUG_MAX_SLEEP
+  if(timeout_s > DEBUG_MAX_SLEEP) {
+     timeout_s = DEBUG_MAX_SLEEP;
+     DPRINTF("Sleep reduced to %ds\n",timeout_s);
+  }
+#endif
   sl_sleeptimer_start_timer_ms(&state_timer_handle,
                                timeout_s * 1000,
                                state_timer_cb,
@@ -1688,7 +1694,14 @@ static bool checksum_check(const void *p, const uint8_t len) {
     total += ((uint8_t *)p)[c];
   }
   Ret = ((uint8_t *)p)[0] == total;
-  LOG("Checksum of %d 0x%02x, expected 0x%02x:\n",len,total,((uint8_t *)p)[0]);
+  LOG("Checksum ");
+  if(!Ret) {
+     LOG_RAW(" Error expected 0x%02x. ",total,((uint8_t *)p)[0]);
+  }
+  else {
+     LOG_RAW("of ");
+  }
+  LOG_RAW("%d bytes:\n",len);
   DUMP_HEX(p,len);
 
   return Ret;

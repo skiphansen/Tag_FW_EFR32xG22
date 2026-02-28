@@ -3,8 +3,6 @@
 #include <ctype.h>
 #include "logging.h"
 
-#if DEBUG_LOG != 0
-
 #if 1
 // Debugging version
 void DumpHex(void *AdrIn,int Len)
@@ -56,7 +54,6 @@ void DumpHex(void *AdrIn,int Len)
       LOG_RAW("\n");
    }
 }
-#endif
 #endif
 
 

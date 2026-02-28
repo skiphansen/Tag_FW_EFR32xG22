@@ -121,6 +121,9 @@ void oepl_app_init(void)
   // Initialize the common hardware resources
   oepl_hw_init();
 
+  DPRINTF("Firmware v%d compiled " __DATE__" " __TIME__ "\n",
+          oepl_hw_get_swversion());
+
   // Check if an upgrade was applied, and if so, tell the FWU system to not
   // indicate this on next boot.
   bool was_upgraded = oepl_fwu_is_upgraded();

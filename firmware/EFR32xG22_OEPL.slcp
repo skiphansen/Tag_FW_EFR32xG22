@@ -236,6 +236,7 @@ config_file:
       component: iostream_eusart
       file_id: iostream_eusart_config
 define:
+  - { name: DEBUG_MAX_SLEEP, value: "5" }
   - name: SL_IOSTREAM_EUSART_EUART_DEBUG_PERIPHERAL
     value: "EUART0"
   - name: SL_IOSTREAM_EUSART_EUART_DEBUG_PERIPHERAL_NO
