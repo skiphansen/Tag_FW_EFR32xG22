@@ -666,17 +666,8 @@ void oepl_radio_process(void)
                     cb_result = cb_fptr(BLOCK_COMPLETE, &blockdesc);
                   } else {
                     DPRINTF("Header bytes 0x%02x 0x%02x 0x%02x 0x%02x\n", datablock_buffer[0], datablock_buffer[1], datablock_buffer[2], datablock_buffer[3]);
-                    DPRINTF("Checksummed bytes:");
-#if 0
-                    for(size_t i = 0; i < bd->size; i++) {
-                      if((i & 0x7) == 0) {
-                        DPRINTF("\n");
-                      }
-                      DPRINTF("%02x ", bd->data[i]);
-                    }
-#else
+                    DPRINTF("Checksummed bytes:\n");
                     DUMP_HEX(bd->data,bd->size);
-#endif
                     cb_result = cb_fptr(BLOCK_CANCELED, NULL);
                     if(rx_state != AWAIT_BLOCK && rx_state != AWAIT_BLOCKREQ_ACK) {
                       if(datablock_buffer) {
@@ -1012,12 +1003,20 @@ oepl_radio_error_t oepl_radio_request_datablock(oepl_datablock_descriptor_t db)
     blocks_in_file++;
   }
   size_t blocksize = db.idx < blocks_in_file - 1 ? 4096 : db.file.filesize - (db.idx * 4096);
-  size_t blockparts = (blocksize + sizeof(struct blockData)) / 99;
-  if(blockparts != (blocksize / 99)) {
-     LOG("Edge case detected\n");
+  size_t payloadsize = sizeof(struct blockData) + blocksize;
+  size_t blockparts = payloadsize / 99;
+
+  if(blockparts * 99 < payloadsize) {
+     blockparts++;
   }
+
+  size_t old_blockparts = blocksize / 99;
   if(blocksize % 99) {
-    blockparts++;
+     old_blockparts++;
+  }
+
+  if(blockparts != old_blockparts) {
+     LOG("Edge case detected, old calulation %d, new %d\n",old_blockparts,blockparts);
   }
 
   DPRINTF("Request block %ld of %ld bytes, block size %ld in %ld parts\n", db.idx, db.file.filesize, blocksize, blockparts);
