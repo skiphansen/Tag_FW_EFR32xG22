@@ -9,3 +9,5 @@ autogen/*
 config/*
 out/*
 firmware.s37
+*.log
+EFR32xG22_OEPL/

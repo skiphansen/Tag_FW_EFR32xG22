@@ -2,6 +2,8 @@
 #include "application_properties.h"
 #include "oepl-definitions.h"
 
+#include "oepl_hw_abstraction.h"
+#define DPRINTF(fmt_, ...) oepl_hw_debugprint(DBG_DISPLAY, (fmt_), ##__VA_ARGS__)
 #define GPIO_UNUSED {.port = gpioPortInvalid, .pin = 0, .idle_state = 0}
 
 // -----------------------------------------------------------------------------
@@ -348,6 +350,7 @@ uint8_t oepl_efr32xg22_get_oepl_hwid(void)
 
   if(tagcfg->hwtype == SOLUM_AUTODETECT) {
     uint8_t solum_tagtype = *((uint8_t*) (USERDATA_BASE + 0x16));
+    DPRINTF("solum_tagtype 0x%x\n",solum_tagtype);
     switch(solum_tagtype) {
       case STYPE_SIZE_016:
         return SOLUM_M3_BWR_16;
@@ -395,6 +398,8 @@ uint8_t oepl_efr32xg22_get_oepl_hwid(void)
         return SOLUM_M3_BWRY_29;
       case STYPE_SIZE_30_BWRY:
         return SOLUM_M3_BWRY_30;
+      case STYPE_SIZE_35_BWRY:
+        return SOLUM_M3_BWRY_35;
       case STYPE_SIZE_43_BWRY:
         return SOLUM_M3_BWRY_43;
       case STYPE_SIZE_75_BWRY:
@@ -480,6 +485,9 @@ bool oepl_efr32xg22_get_displayparams(oepl_efr32xg22_displayparams_t* displaypar
     uint16_t solum_xres = *((uint8_t*) (USERDATA_BASE + 0x0B)) + (((uint16_t)(*((uint8_t*) (USERDATA_BASE + 0x0C)))) << 8);
     uint16_t solum_yres = *((uint8_t*) (USERDATA_BASE + 0x0D)) + (((uint16_t)(*((uint8_t*) (USERDATA_BASE + 0x0E)))) << 8);
     uint8_t solum_tagtype = *((uint8_t*) (USERDATA_BASE + 0x16));
+
+    DPRINTF("solum_ctrltype 0x%x solum_colortype 0x%x solum_xres %d solum_yres %d solum_tagtype 0x%02x\n",
+            solum_ctrltype,solum_colortype,solum_xres,solum_yres,solum_tagtype);
 
     displayparams->xres = solum_xres;
     displayparams->yres = solum_yres;
@@ -575,6 +583,10 @@ bool oepl_efr32xg22_get_displayparams(oepl_efr32xg22_displayparams_t* displaypar
       case STYPE_SIZE_029_FREEZER:
         displayparams->swapXY = true;
         displayparams->xoffset = 8;
+        break;
+      case STYPE_SIZE_35_BWRY:
+         DPRINTF("tagtype EL035F5C4C 3.5\"\n");
+         displayparams->swapXY = true;
         break;
       case STYPE_SIZE_042:
         displayparams->mirrorY = true;

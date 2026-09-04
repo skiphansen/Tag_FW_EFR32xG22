@@ -272,6 +272,7 @@ void oepl_display_driver_common_instruction_with_data_multi(uint8_t opcode, cons
   _assert_command();
   _assert_cs(cs_mask);
   
+  DPRINTF("\nC: %02X\n",opcode);
   SPIDRV_MTransmitB(handle, &opcode, 1);
 
   _assert_data();
@@ -292,6 +293,9 @@ void oepl_display_driver_common_instruction_with_data_multi(uint8_t opcode, cons
       GPIO_PinOutClear(cfg->display->nCS2.port, cfg->display->nCS2.pin);
     }
     
+    for(int i = 0; i < data_len; i++) {
+       DPRINTF("D: %02X\n",data_buffer[i]);
+    }
     SPIDRV_MTransmitB(handle, data_buffer, data_len);
   }
 

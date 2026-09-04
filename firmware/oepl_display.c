@@ -211,6 +211,7 @@ void oepl_display_show_image(size_t img_idx)
 
 void oepl_display_show_infoscreen(oepl_display_infoscreen_t screen)
 {
+#if 0
   if(current_state.is_infoscreen &&
      current_state.infoscreen == screen &&
      requested_overlay_flags == current_state.overlay_flags) {
@@ -218,6 +219,7 @@ void oepl_display_show_infoscreen(oepl_display_infoscreen_t screen)
     DPRINTF("Already displaying this info screen\n");
     return;
   }
+#endif
 
   // Find out if we have a stored image for this info screen
   uint8_t imgtype;

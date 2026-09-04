@@ -1,0 +1,368 @@
+<Project Version="10.0" VendorName="SlickEdit" TemplateName="Other C/C++" WorkingDir="../firmware">
+  <Config Name="Debug" Type="cpp" DebugCallbackName="gdb" OutputFile="%bdCustom_PriceTag_AccesPoint" CompilerConfigName="Latest Version">
+    <Menu>
+      <Target Name="Compile" MenuCaption="&amp;Compile" CaptureOutputWith="ProcessBuffer" OutputExts="*.o" SaveOption="SaveCurrent" RunFromDir="%rw">
+        <Exec CmdLine="cc -c -g %i %defd -o &quot;%bd%n.o&quot; &quot;%f&quot;" />
+      </Target>
+      <Target Name="Link" MenuCaption="&amp;Link">
+        <Exec CmdLine="cc -g -o &quot;%o&quot; %f %libs" />
+      </Target>
+      <Target Name="Build" MenuCaption="&amp;Build" CaptureOutputWith="ProcessBuffer" SaveOption="SaveWorkspaceFiles" RunFromDir="%rw">
+        <Exec CmdLine="&quot;%(VSLICKBIN1)vsbuild&quot; build &quot;%w&quot; &quot;%r&quot;" />
+      </Target>
+      <Target Name="Rebuild" MenuCaption="&amp;Rebuild" CaptureOutputWith="ProcessBuffer" SaveOption="SaveWorkspaceFiles" RunFromDir="%rw">
+        <Exec CmdLine="&quot;%(VSLICKBIN1)vsbuild&quot; rebuild &quot;%w&quot; &quot;%r&quot;" />
+      </Target>
+      <Target Name="Debug" MenuCaption="&amp;Debug" SaveOption="SaveNone" BuildFirst="1" CaptureOutputWith="ProcessBuffer" RunFromDir="%rw">
+        <Exec CmdLine="vsdebugio -prog &quot;%o&quot;" />
+      </Target>
+      <Target Name="Execute" MenuCaption="E&amp;xecute" SaveOption="SaveNone" BuildFirst="1" CaptureOutputWith="ProcessBuffer" RunFromDir="%rw">
+        <Exec CmdLine="&quot;%o&quot;" />
+      </Target>
+    </Menu>
+  </Config>
+  <Config Name="Release" Type="cpp" DebugCallbackName="gdb" OutputFile="%bdCustom_PriceTag_AccesPoint" CompilerConfigName="Latest Version">
+    <Menu>
+      <Target Name="Compile" MenuCaption="&amp;Compile" CaptureOutputWith="ProcessBuffer" SaveOption="SaveCurrent" OutputExts="*.o" RunFromDir="%rw">
+        <Exec CmdLine="cc -c -O %i %defd -o &quot;%bd%n.o&quot; &quot;%f&quot;" />
+      </Target>
+      <Target Name="Link" MenuCaption="&amp;Link">
+        <Exec CmdLine="cc -O -o &quot;%o&quot; %f %libs" />
+      </Target>
+      <Target Name="Build" MenuCaption="&amp;Build" CaptureOutputWith="ProcessBuffer" SaveOption="SaveWorkspaceFiles" RunFromDir="%rw">
+        <Exec CmdLine="&quot;%(VSLICKBIN1)vsbuild&quot; build &quot;%w&quot; &quot;%r&quot;" />
+      </Target>
+      <Target Name="Rebuild" MenuCaption="&amp;Rebuild" CaptureOutputWith="ProcessBuffer" SaveOption="SaveWorkspaceFiles" RunFromDir="%rw">
+        <Exec CmdLine="&quot;%(VSLICKBIN1)vsbuild&quot; rebuild &quot;%w&quot; &quot;%r&quot;" />
+      </Target>
+      <Target Name="Debug" MenuCaption="&amp;Debug" SaveOption="SaveNone" BuildFirst="1" CaptureOutputWith="ProcessBuffer" RunFromDir="%rw">
+        <Exec CmdLine="vsdebugio -prog &quot;%o&quot;" />
+      </Target>
+      <Target Name="Execute" MenuCaption="E&amp;xecute" SaveOption="SaveNone" BuildFirst="1" CaptureOutputWith="ProcessBuffer" RunFromDir="%rw">
+        <Exec CmdLine="&quot;%o&quot;" />
+      </Target>
+    </Menu>
+  </Config>
+  <Rules Name="Compile">
+    <Rule InputExts="*.s" OutputExts="*.o" LinkObject="1">
+      <Exec CmdLine="as -o &quot;%bd%n.o&quot; &quot;%f&quot;" />
+    </Rule>
+  </Rules>
+  <Files>
+    <Folder Name="Source Files" Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d">
+      <F N="../custom/7_4_bwry/out/autogen/rail_config.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_device_init_clocks.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_event_handler.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_iostream_handles.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_iostream_init_eusart_instances.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_power_manager_handler.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_rail_util_callbacks.c" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_rail_util_init.c" />
+      <F N="../custom/7_4_bwry/out/boilerplate/app_init.c" />
+      <F N="../custom/7_4_bwry/out/boilerplate/app_process.c" />
+      <F N="../custom/7_4_bwry/out/boilerplate/main.c" />
+      <F N="../custom/7_4_bwry/out/common/md5.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/adler32.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/crc32.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/defl_static.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/genlz77.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/tinfgzip.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/tinflate.c" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/tinfzlib.c" />
+      <F N="../custom/7_4_bwry/out/drivers/oepl_display_driver_common.c" />
+      <F N="../custom/7_4_bwry/out/fonts/FreeSans9pt7b.c" />
+      <F N="../custom/7_4_bwry/out/fonts/FreeSansBold18pt7b.c" />
+      <F N="../custom/7_4_bwry/out/fonts/FreeSansBold24pt7b.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/hardware/driver/mx25_flash_shutdown/src/sl_mx25_flash_shutdown_usart/sl_mx25_flash_shutdown.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_interface.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_interface_storage.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/app_properties/app_properties.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/src/sl_assert.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/src/sl_slist.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/src/sl_string.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/src/sl_syscalls.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/toolchain/src/sl_memory.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Source/startup_efr32bg22.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Source/system_efr32bg22.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/dmadrv/src/dmadrv.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/gpiointerrupt/src/gpiointerrupt.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/src/nvm3_default_common_linker.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/src/nvm3_hal_flash.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/src/nvm3_lock.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/spidrv/src/spidrv.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_burtc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_cmu.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_core.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_emu.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_eusart.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_gpio.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_i2c.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_iadc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_ldma.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_msc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_prs.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_rmu.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_rtcc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_system.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_timer.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_usart.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/src/em_wdog.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/pa-conversions/pa_conversions_efr32.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/pa-conversions/pa_curves_efr32.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_power_manager_init/sl_rail_util_power_manager_init.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_protocol/sl_rail_util_protocol.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_pti/sl_rail_util_pti.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_rssi/sl_rail_util_rssi.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/src/sl_device_init_dcdc_s2.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/src/sl_device_init_emu_s2.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/src/sl_device_init_hfxo_s2.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/src/sl_device_init_nvic.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/src/sl_iostream.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/src/sl_iostream_eusart.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/src/sl_iostream_retarget_stdio.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/src/sl_iostream_stdlib_config.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/src/sl_iostream_uart.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/src/sl_iostream_usart.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/mpu/src/sl_mpu.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/src/sl_power_manager.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/src/sl_power_manager_debug.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/src/sl_power_manager_hal_s2.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/src/sl_sleeptimer.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/src/sl_sleeptimer_hal_burtc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/src/sl_sleeptimer_hal_prortc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/src/sl_sleeptimer_hal_timer.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/system/src/sl_system_init.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/system/src/sl_system_process_action.c" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/udelay/src/sl_udelay.c" />
+      <F N="../custom/7_4_bwry/out/logging.c" />
+      <F N="../custom/7_4_bwry/out/oepl_app.c" />
+      <F N="../custom/7_4_bwry/out/oepl_display.c" />
+      <F N="../custom/7_4_bwry/out/oepl_display_driver_custom.c" />
+      <F N="../custom/7_4_bwry/out/oepl_efr32_hwtypes_custom.c" />
+      <F N="../custom/7_4_bwry/out/oepl_flash_driver.c" />
+      <F N="../custom/7_4_bwry/out/oepl_hw_abstraction.c" />
+      <F N="../custom/7_4_bwry/out/oepl_led.c" />
+      <F N="../custom/7_4_bwry/out/oepl_nvm.c" />
+      <F N="../custom/7_4_bwry/out/oepl_radio.c" />
+      <F N="../custom/7_4_bwry/out/oepl_compression.cpp" />
+      <F N="../custom/7_4_bwry/out/oepl_drawing.cpp" />
+    </Folder>
+    <Folder Name="Header Files" Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+      <F N="../custom/7_4_bwry/out/autogen/rail_config.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_application_type.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_component_catalog.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_event_handler.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_iostream_handles.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_iostream_init_eusart_instances.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_iostream_init_instances.h" />
+      <F N="../custom/7_4_bwry/out/autogen/sl_rail_util_init.h" />
+      <F N="../custom/7_4_bwry/out/boilerplate/app_init.h" />
+      <F N="../custom/7_4_bwry/out/boilerplate/app_process.h" />
+      <F N="../custom/7_4_bwry/out/common/bitmaps.h" />
+      <F N="../custom/7_4_bwry/out/common/md5.h" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/defl_static.h" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/tinf_compat.h" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/tinf.h" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/uzlib_conf.h" />
+      <F N="../custom/7_4_bwry/out/common/uzlib/src/uzlib.h" />
+      <F N="../custom/7_4_bwry/out/config/app_properties_config.h" />
+      <F N="../custom/7_4_bwry/out/config/btl_interface_cfg.h" />
+      <F N="../custom/7_4_bwry/out/config/btl_interface_cfg_s2c2.h" />
+      <F N="../custom/7_4_bwry/out/config/dmadrv_config.h" />
+      <F N="../custom/7_4_bwry/out/config/emlib_core_debug_config.h" />
+      <F N="../custom/7_4_bwry/out/config/nvm3_default_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_device_init_dcdc_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_device_init_emu_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_device_init_hfxo_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_iostream_eusart_euart_debug_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_memory_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_mx25_flash_shutdown_usart_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_power_manager_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_callbacks_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_init_inst0_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_pa_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_power_manager_init_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_protocol_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_pti_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_rail_util_rssi_config.h" />
+      <F N="../custom/7_4_bwry/out/config/sl_sleeptimer_config.h" />
+      <F N="../custom/7_4_bwry/out/config/spidrv_config.h" />
+      <F N="../custom/7_4_bwry/out/drivers/oepl_display_driver_common.h" />
+      <F N="../custom/7_4_bwry/out/drivers/oepl_display_driver.h" />
+      <F N="../custom/7_4_bwry/out/common/fonts/FreeSans9pt7b.h" />
+      <F N="../custom/7_4_bwry/out/common/fonts/FreeSansBold18pt7b.h" />
+      <F N="../custom/7_4_bwry/out/common/fonts/FreeSansBold24pt7b.h" />
+      <F N="../custom/7_4_bwry/out/fonts/fonts.h" />
+      <F N="../custom/7_4_bwry/out/oepl_drawing_capi.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/hardware/driver/mx25_flash_shutdown/inc/sl_mx25_flash_shutdown_usart/sl_mx25_flash_shutdown.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/application_properties.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_errorcode.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_interface.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_interface_parser.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_interface_storage.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/bootloader/api/btl_reset_info.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/CMSIS/Core/Include/cmsis_compiler.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/CMSIS/Core/Include/cmsis_gcc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/CMSIS/Core/Include/cmsis_version.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/CMSIS/Core/Include/core_cm33.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/CMSIS/Core/Include/mpu_armv8.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_assert.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_atomic.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_common.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_enum.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_slist.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_status.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/inc/sl_string.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/toolchain/inc/sl_gcc_preinclude.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/toolchain/inc/sl_memory.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/common/toolchain/inc/sl_memory_region.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_aes.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_buram.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_burtc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22c224f512im40.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_cmu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_cryptoacc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_dcdc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_devinfo.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_dma_descriptor.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_dpll.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_emu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_eusart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_fsrco.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_gpcrc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_gpio.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_gpio_port.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_hfrco.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_hfxo.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_i2c.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_iadc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_icache.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_ldma.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_ldmaxbar_defines.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_ldmaxbar.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_letimer.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_lfrco.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_lfxo.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_msc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_pdm.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_prs.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_prs_signals.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_rtcc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_smu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_syscfg.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_timer.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_ulfrco.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_usart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/efr32bg22_wdog.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/em_device.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/Device/SiliconLabs/EFR32BG22/Include/system_efr32bg22.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/common/inc/ecode.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/dmadrv/inc/dmadrv.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/gpiointerrupt/inc/gpiointerrupt.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/inc/nvm3_default.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/inc/nvm3_generic.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/inc/nvm3.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/inc/nvm3_hal_flash.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/inc/nvm3_hal.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/nvm3/inc/nvm3_lock.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emdrv/spidrv/inc/spidrv.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_burtc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_bus.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_chip.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_cmu_compat.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_cmu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_core_generic.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_core.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_emu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_eusart_compat.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_eusart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_gpio.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_i2c.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_iadc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_ldma.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_msc_compat.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_msc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_prs.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_ramfunc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_rmu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_rtcc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_syscfg.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_system_generic.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_system.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_timer.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_usart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/em_wdog.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/emlib/inc/sli_em_cmu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/chip/efr32/efr32xg2x/rail_chip_specific.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/common/rail_assert_error_codes.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/common/rail_features.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/common/rail.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/common/rail_types.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/pa-conversions/efr32xg22/sl_rail_util_pa_curves.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/pa-conversions/pa_conversions_efr32.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/pa-conversions/pa_curves_efr32.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/pa-conversions/pa_curve_types_efr32.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_callbacks/sli_rail_util_callbacks.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_power_manager_init/sl_rail_util_power_manager_init.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_protocol/sl_rail_util_protocol.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_protocol/sl_rail_util_protocol_types.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_pti/sl_rail_util_pti.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/plugin/rail_util_rssi/sl_rail_util_rssi.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/protocol/ble/rail_ble.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/protocol/ieee802154/rail_ieee802154.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/protocol/sidewalk/rail_sidewalk.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/radio/rail_lib/protocol/zwave/rail_zwave.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/inc/sl_device_init_clocks.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/inc/sl_device_init_dcdc.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/inc/sl_device_init_emu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/inc/sl_device_init_hfxo.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/device_init/inc/sl_device_init_nvic.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/inc/sli_iostream_uart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/inc/sl_iostream_eusart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/inc/sl_iostream.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/inc/sl_iostream_stdlib_config.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/inc/sl_iostream_uart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/iostream/inc/sl_iostream_usart.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/mpu/inc/sl_mpu.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/inc/sli_power_manager.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/inc/sl_power_manager_debug.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/inc/sl_power_manager.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/power_manager/src/sli_power_manager_private.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/inc/sli_sleeptimer.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/inc/sl_sleeptimer.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/sleeptimer/src/sli_sleeptimer_hal.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/system/inc/sl_system_init.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/system/inc/sl_system_process_action.h" />
+      <F N="../custom/7_4_bwry/out/gecko_sdk_4.4.1/platform/service/udelay/inc/sl_udelay.h" />
+      <F N="../custom/7_4_bwry/out/logging.h" />
+      <F N="../custom/7_4_bwry/out/oepl_app.h" />
+      <F N="../custom/7_4_bwry/out/oepl_display_driver_custom.h" />
+      <F N="../custom/7_4_bwry/out/oepl_display.h" />
+      <F N="../custom/7_4_bwry/out/oepl_drawing_capi.h" />
+      <F N="../custom/7_4_bwry/out/oepl_efr32_hwtypes.h" />
+      <F N="../custom/7_4_bwry/out/oepl_flash_driver.h" />
+      <F N="../custom/7_4_bwry/out/oepl_hw_abstraction.h" />
+      <F N="../custom/7_4_bwry/out/oepl_led.h" />
+      <F N="../custom/7_4_bwry/out/oepl_nvm.h" />
+      <F N="../custom/7_4_bwry/out/oepl_radio.h" />
+      <F N="../custom/7_4_bwry/out/shared/oepl-definitions.h" />
+      <F N="../custom/7_4_bwry/out/shared/oepl-proto.h" />
+      <F N="../custom/7_4_bwry/out/oepl_compression.hpp" />
+      <F N="../custom/7_4_bwry/out/oepl_drawing.hpp" />
+    </Folder>
+    <Folder Name="Other Files" Filters="">
+      <F N="../build_all.sh" />
+      <F N="../firmware/build_firmware.sh" />
+      <F N="../firmware/EFR32xG22_OEPL.slcp" />
+      <F N="../firmware/EFR32xG22_OEPL_standalone.slcp" />
+      <F N="../readme.md" />
+      <F N="../run_docker.sh" />
+      <F N="../firmware/update_vpj.sh" />
+    </Folder>
+  </Files>
+  <Macro>
+    <ExecMacro CmdLine="set_save_option - E" />
+    <ExecMacro CmdLine="tabs 1 4" />
+  </Macro>
+</Project>
